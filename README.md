@@ -41,4 +41,3 @@ Flutter web/desktop UI for the **RFID Management Dashboard**: student registrati
 ### Backend integration notes
 
 - Student data is currently stored in a local list for UI prototyping; replace with `Supabase.instance.client` CRUD once your tables/policies are ready.
-- The RFID input is a normal text field: most USB RFID readers behave like a keyboard and will type into the focused field.
