@@ -1,6 +1,6 @@
-## Capstone Flutter Dashboard
+## RFID Management Module (Flutter)
 
-This is a Flutter implementation of the STI Command **Pulse Dashboard** UI, designed primarily for web/desktop form factors and prepared for future **Supabase** integration.
+Flutter web/desktop UI for the **RFID Management Dashboard**: student registration, RFID number capture (keyboard wedge scanner), and an in-memory **Student Records** table (ready to be wired to Supabase).
 
 ### Getting started
 
@@ -10,31 +10,24 @@ This is a Flutter implementation of the STI Command **Pulse Dashboard** UI, desi
    flutter pub get
    ```
 
-2. **(Optional) Configure Supabase**
+2. **Configure Supabase (frontend)**
 
-   The app is already wired to initialize Supabase in `main.dart` when the URL and anon key are provided using Dart compile-time environment variables:
+   Supabase is initialized in `lib/main.dart` when you replace the placeholders with your project values:
 
-   ```bash
-   flutter run -d chrome --dart-define=SUPABASE_URL=YOUR_URL --dart-define=SUPABASE_ANON_KEY=YOUR_ANON_KEY
-   ```
+   - `supabaseUrl`
+   - `supabaseAnonKey`
 
-   Or when building a release:
+   Use the **anon/public** key only (never commit a **service role** key in a client app).
 
-   ```bash
-   flutter build web --dart-define=SUPABASE_URL=YOUR_URL --dart-define=SUPABASE_ANON_KEY=YOUR_ANON_KEY
-   ```
+3. **Run the app**
 
-   Until you set these values, the app runs fully offline with mocked UI data.
-
-3. **Run the dashboard**
-
-   For web (recommended for this layout):
+   Web (recommended for this layout):
 
    ```bash
    flutter run -d chrome
    ```
 
-   For desktop (if enabled in your Flutter SDK):
+   Windows desktop (if enabled in your Flutter SDK):
 
    ```bash
    flutter run -d windows
@@ -42,8 +35,10 @@ This is a Flutter implementation of the STI Command **Pulse Dashboard** UI, desi
 
 ### Project structure
 
-- `lib/main.dart` – App entry point, theme, and Supabase initialization hook.
-- `lib/ui/dashboard_page.dart` – Main Pulse Dashboard layout and all UI components (sidebar, top bar, summary cards, hotzones, RFID feed).
+- `lib/main.dart` – App entry point, theme, browser title, and Supabase initialization.
+- `lib/ui/dashboard_page.dart` – RFID dashboard UI: registration form, RFID field, student records table (search, edit inline, delete), and temporary in-memory persistence until backend integration is added.
 
-You can now plug Supabase queries into the summary cards, hotzones, and live RFID feed by replacing the mocked data with calls to `Supabase.instance.client`.
+### Backend integration notes
 
+- Student data is currently stored in a local list for UI prototyping; replace with `Supabase.instance.client` CRUD once your tables/policies are ready.
+- The RFID input is a normal text field: most USB RFID readers behave like a keyboard and will type into the focused field.
