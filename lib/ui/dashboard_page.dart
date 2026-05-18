@@ -222,7 +222,7 @@ class _DashboardPageState extends State<DashboardPage> {
         children: [
           Container(
             height: 56,
-            color: const Color(0xFF0F172A),
+            color: const Color(0xFF333652),
             child: SafeArea(
               bottom: false,
               child: Padding(

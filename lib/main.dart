@@ -37,8 +37,8 @@ class CapstoneApp extends StatelessWidget {
         seedColor: const Color(0xFF2563EB),
         brightness: Brightness.light,
       ),
-      scaffoldBackgroundColor: const Color(0xFFF5F7FB),
-      textTheme: GoogleFonts.interTextTheme(),
+      scaffoldBackgroundColor: const Color(0xFFF0F4FF),
+      textTheme: GoogleFonts.poppinsTextTheme(),
     );
 
     return MaterialApp(
